@@ -1,6 +1,6 @@
 # Dota Hack Launcher on WPF (MVVM) for demo purposes
 ### **[IMPORTANT!]**
-#### **1. A huge part of code has been removed to make the project usable for demo purposes**
+#### **1. A huge part of code has been removed (as well as git history) to make the project usable for demo purposes**
 #### **2. To have a debug working properly disable comment Resource.Embedder package and enable it back before Release build**
 
 ### Dependecies:
