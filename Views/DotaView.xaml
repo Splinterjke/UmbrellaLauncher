@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="UmbrellaProject.Views.DotaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:s="https://github.com/canton7/Stylet"
+             xmlns:converters="clr-namespace:UmbrellaProject.Converters"
+             xmlns:local="clr-namespace:UmbrellaProject.Views"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             Language="{ApplicationLanguage}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:DateTimeToNameConverter x:Key="DateTimeToNameConverter"/>
+        <converters:DateTimeToVisibilityConverter x:Key="DateTimeToVisibilityConverter"/>
+        <converters:DateTimeToVisibilityConverterNegate x:Key="DateTimeToVisibilityConverterNegate"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <Style x:Key="UpgradeSub" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextBlock.Foreground" Value="#888888"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="White" Duration="0:0:0.10"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="#888888" Duration="0:0:0.10"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="1" To="1.15" AutoReverse="True" Duration="0:0:0.40" RepeatBehavior="Forever" />
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" From="1" To="1.15" AutoReverse="True" Duration="0:0:0.40" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl s:View.Model="{Binding ActiveItem}" Grid.Column="0"/>
+        <Grid Grid.Column="1" Background="#1a1a1a">
+            <Grid Margin="20,10,20,10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Style="{StaticResource FlatBtn}" Command="{s:Action ShowNews}">
+                        <Button.Content>
+                            <Grid>
+                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="#991E29" Text="{DynamicTranslation News}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="1" Style="{StaticResource FlatBtn}" Command="{s:Action ShowScripts}">
+                        <Button.Content>
+                            <Grid>
+                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="#991E29" Text="{DynamicTranslation Scripts}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                    <Button Grid.Column="2" Style="{StaticResource FlatBtn}" Command="{s:Action ShowSettings}" MinWidth="70">
+                        <Button.Content>
+                            <Grid>
+                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="#991E29" Text="{DynamicTranslation Settings}"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <StackPanel Grid.Row="1" Margin="0,30,0,0">
+                    <Ellipse Height="110" Width="110" Stroke="#991E29" StrokeThickness="3">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding GameBrowserVm.UserData.AvatarPath}" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Text="{Binding GameBrowserVm.UserData.Username}" FontSize="20" />
+                        <Border Margin="6,0,0,0" Cursor="Hand" Background="Transparent" >
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Aquamarine" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Border.InputBindings>
+                                <MouseBinding Gesture="LeftClick" s:View.ActionTarget="{Binding GameBrowserVm}" Command="{s:Action LogOut}"/>
+                            </Border.InputBindings>
+                            <Viewbox Width="24" Height="24" IsHitTestVisible="False">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M14.08,15.59L16.67,13H7V11H16.67L14.08,8.41L15.5,7L20.5,12L15.5,17L14.08,15.59M19,3A2,2 0 0,1 21,5V9.67L19,7.67V5H5V19H19V16.33L21,14.33V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H19Z"  Fill="#991E29" />
+                                </Canvas>
+                            </Viewbox>
+                        </Border>
+                    </StackPanel>
+
+                    <TextBlock Cursor="Hand" Style="{StaticResource UpgradeSub}" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" Text="{DynamicTranslation UpdateSubscription}" Visibility="{Binding GameBrowserVm.UserData, Converter={StaticResource DateTimeToVisibilityConverterNegate}}">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{s:Action UpgradeSubscription}" MouseAction="LeftClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                    <TextBlock Foreground="#888888" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" Text="{DynamicTranslation FREE_DAYS}" Visibility="{Binding GameBrowserVm.UserData.IsFreeDays, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <TextBlock Foreground="#888888" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" Text="{DynamicTranslation LIFETIME}" Visibility="{Binding GameBrowserVm.UserData.IsLifeTime, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    <StackPanel Cursor="Hand" Margin="0,10,0,0" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding GameBrowserVm.UserData, Converter={StaticResource DateTimeToVisibilityConverter}}">
+                        <StackPanel.InputBindings>
+                            <MouseBinding Command="{s:Action UpgradeSubscription}" MouseAction="LeftClick" />
+                        </StackPanel.InputBindings>
+                        <TextBlock Text="{DynamicTranslation Expire_TextBlock, StringFormat='\{0}: '}" FontSize="14" Foreground="#888888"/>
+                        <TextBlock Text="{Binding GameBrowserVm.UserData.SubEndTime, Converter={StaticResource DateTimeToNameConverter}}" FontSize="14" Foreground="#888888"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <Grid Grid.Row="2" Margin="0,30,0,0">
+                    <TextBlock Text="{DynamicTranslation CheatStatus}" FontSize="12"/>
+                    <TextBlock Text="{BindingTranslation {Binding CheatStatusText}}" Foreground="{Binding StatusColor}" FontSize="12" HorizontalAlignment="Right"/>
+                </Grid>
+                <Button Margin="0,0,0,20" Width="160" Height="50" Grid.Row="3" Style="{StaticResource FlatBtn}" Command="{s:Action StartDota}">
+                    <Button.Content>
+                        <Grid>
+                            <TextBlock FontSize="28" FontWeight="Bold" Foreground="#991E29" Text="{DynamicTranslation Start_TextBlock}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

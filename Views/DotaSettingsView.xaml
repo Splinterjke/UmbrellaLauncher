@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="UmbrellaProject.Views.DotaSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UmbrellaProject.Views"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Language="{ApplicationLanguage}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#1a1a1a" BorderThickness="0,0,0,1" BorderBrush="#2d0d10">
+            <Border.Effect>
+                <DropShadowEffect Direction="-90" Opacity=".3" ShadowDepth="8" BlurRadius="15"/>
+            </Border.Effect>
+            <TextBlock Text="{DynamicTranslation Settings}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" />
+        </Border>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation AutoScriptsUpdate}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    <CheckBox Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsAutoUpdateEnabled}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                </Grid>
+            </Border>
+            <!--<Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation CRCcheck}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    <CheckBox Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsCheckCrcEnabled}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                </Grid>
+            </Border>-->
+            <Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation AntiVAC}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    <CheckBox Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsAntiVACEnabled}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                </Grid>
+            </Border>
+            <Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation ManualSteamLaunched}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Foreground="#888888" Text="{DynamicTranslation ManualSteamLaunch_hint}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="12"/>
+                    </StackPanel>
+                    <CheckBox Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsDotaLaunchTriggerEnabled}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                </Grid>
+            </Border>
+            <Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <TextBlock Foreground="#bbbbbb" Text="DirectX version" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    <ComboBox BorderThickness="0" FontSize="14" ItemsSource="{Binding DXVersions}" HorizontalAlignment="Right" Margin="0,0,20,0" Width="60" SelectedValue="{Binding SelectedDXVersion}"/>
+                </Grid>
+            </Border>
+            <Border BorderThickness="0,0,0,1" BorderBrush="#2d0d10" Height="50">
+                <Grid>
+                    <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation GameLaunchOptions}" HorizontalAlignment="Stretch" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    <TextBox MaxLines="1" MaxLength="120" BorderBrush="#2d0d10" Foreground="#bbbbbb" FontSize="14" md:HintAssist.Hint="{DynamicTranslation Example, StringFormat='\{0} -high -enable_addons'}" Text="{Binding LaunchOptions}" VerticalAlignment="Center" HorizontalAlignment="Right" Width="250" Margin="0,0,10,0"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

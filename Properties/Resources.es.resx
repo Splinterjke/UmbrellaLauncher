@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginBtnContent" xml:space="preserve">
+    <value>REGISTRARSE</value>
+  </data>
+  <data name="Language_TextBlock" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="CheckingForUpdate" xml:space="preserve">
+    <value>COMPROBACIÓN DE ACTUALIZACIÓN</value>
+  </data>
+  <data name="INIT_KERNEL_ERROR" xml:space="preserve">
+    <value>Inicializando: error del kernel</value>
+  </data>
+  <data name="SERVER_CONNECT_ERROR" xml:space="preserve">
+    <value>Inicializando: error de conexión del servidor, intente de nuevo más tarde</value>
+  </data>
+  <data name="DownloadingUpdate" xml:space="preserve">
+    <value>DESCARGANDO ACTUALIZACIÓN</value>
+  </data>
+  <data name="Authorizing" xml:space="preserve">
+    <value>AUTORIZANDO</value>
+  </data>
+  <data name="UpdatingFailed" xml:space="preserve">
+    <value>Actualización: el servidor de actualización remota no está disponible</value>
+  </data>
+  <data name="AUTH_ERROR" xml:space="preserve">
+    <value>Autorización: inicio de sesión o contraseña incorrectos</value>
+  </data>
+  <data name="HWID_ERROR" xml:space="preserve">
+    <value>Autorización: HWID incorrecto</value>
+  </data>
+  <data name="RemoteServerUnavailable" xml:space="preserve">
+    <value>Servidor: el servidor remoto no está disponible</value>
+  </data>
+  <data name="LoadingText" xml:space="preserve">
+    <value>CARGANDO</value>
+  </data>
+  <data name="AskForSteamStart" xml:space="preserve">
+    <value>Por favor, inicie Steam y presione nuevamente el botón de Comenzar</value>
+  </data>
+  <data name="SteamRebooting" xml:space="preserve">
+    <value>STEAM REBOOTING</value>
+  </data>
+  <data name="Injecting" xml:space="preserve">
+    <value>INJECTING UMBRELLA</value>
+  </data>
+  <data name="SubTimeExpired" xml:space="preserve">
+    <value>Su tiempo de suscripción ha expirado, actualice la suscripción</value>
+  </data>
+  <data name="LOAD_KERNEL_ERROR" xml:space="preserve">
+    <value>Kernel: error de carga del producto</value>
+  </data>
+  <data name="SERVER_ERROR" xml:space="preserve">
+    <value>Inicializando: error de conexión del servidor, intente de nuevo más tarde</value>
+  </data>
+  <data name="ANTIVAC_OPENPROCESS_ERROR" xml:space="preserve">
+    <value>AntiVAC: error de OpenProcess</value>
+  </data>
+  <data name="ANTIVAC_STEAMPATH_ERROR" xml:space="preserve">
+    <value>AntiVAC: error al obtener la ruta Steam (no se encuentra steam.exe)</value>
+  </data>
+  <data name="ANTIVAC_INJECT_ERROR" xml:space="preserve">
+    <value>AntiVAC: error de inyección, reinicie el iniciador por administrador y desactive antivirus y firewalls</value>
+  </data>
+  <data name="CHEAT_PROTECTION_ERROR" xml:space="preserve">
+    <value>Truco: error de protección de inicio.</value>
+  </data>
+  <data name="CHEAT_DOTAPATH_ERROR" xml:space="preserve">
+    <value>Truco: no se pudo obtener la ruta Dota2, probablemente nunca se lanzó Dota2</value>
+  </data>
+  <data name="CHEAT_CRCCHECK_ERROR" xml:space="preserve">
+    <value>Cheat: los archivos del juego verifican el error, usted actualiza el cliente del juego o espera la actualización del servidor Umbrella, intente de nuevo más tarde</value>
+  </data>
+  <data name="CHEAT_INJECT_ERROR" xml:space="preserve">
+    <value>Truco: error de inyección</value>
+  </data>
+  <data name="LaunchingDota" xml:space="preserve">
+    <value>LANZANDO DOTA</value>
+  </data>
+  <data name="IncorrectLuaPath" xml:space="preserve">
+    <value>Ruta lua incorrecta, solo admite la ruta o depósito github .lua</value>
+  </data>
+  <data name="EmailHint" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PasswordHint" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenido</value>
+  </data>
+  <data name="ERROR_TextBlock" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="WARNING_TextBlock" xml:space="preserve">
+    <value>ADVERTENCIA</value>
+  </data>
+  <data name="SteamIsLaunched" xml:space="preserve">
+    <value>Steam ha sido lanzado, pero abre la biblioteca de juegos de Steam y presiona el botón OK</value>
+  </data>
+  <data name="MainSettings_TextBlock" xml:space="preserve">
+    <value>AJUSTES PRINCIPALES</value>
+  </data>
+  <data name="Start_TextBlock" xml:space="preserve">
+    <value>START</value>
+  </data>
+  <data name="FREE_DAYS" xml:space="preserve">
+    <value>Días libres</value>
+  </data>
+  <data name="Expire_TextBlock" xml:space="preserve">
+    <value>Expirar</value>
+  </data>
+  <data name="CheatStatus" xml:space="preserve">
+    <value>ESTADO DE CHEAT</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>ACTUALIZADO</value>
+  </data>
+  <data name="UpdateSubscription" xml:space="preserve">
+    <value>Suscripción de actualización</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>NOTICIAS</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>GUIONES</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>AJUSTES</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>ACTUALIZANDO</value>
+  </data>
+  <data name="AutoScriptsUpdate" xml:space="preserve">
+    <value>Actualización automática de scripts</value>
+  </data>
+  <data name="CRCcheck" xml:space="preserve">
+    <value>Control de CRC</value>
+  </data>
+  <data name="AntiVAC" xml:space="preserve">
+    <value>Anti VAC</value>
+  </data>
+  <data name="ManualSteamLaunched" xml:space="preserve">
+    <value>Manual Steam lanzó aceptando</value>
+  </data>
+  <data name="ManualSteamLaunch_hint" xml:space="preserve">
+    <value>(enciéndalo cuando Dota2 se inicia demasiado pronto)</value>
+  </data>
+  <data name="GameLaunchOptions" xml:space="preserve">
+    <value>Opciones de lanzamiento del juego</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>Ejemplo</value>
+  </data>
+  <data name="AddScripts_tooltip" xml:space="preserve">
+    <value>Agregar scripts</value>
+  </data>
+  <data name="UpdateScripts_tooltip" xml:space="preserve">
+    <value>Actualizar todos los scripts</value>
+  </data>
+  <data name="DeleteScripts_tooltip" xml:space="preserve">
+    <value>Eliminar todos los scripts</value>
+  </data>
+  <data name="PasteLuaPath_textblock" xml:space="preserve">
+    <value>PASTE LUA SCRIPT PATH</value>
+  </data>
+  <data name="URLtoLuaPath_hint" xml:space="preserve">
+    <value>URL al script lua o al repositorio github</value>
+  </data>
+  <data name="AcceptBtnContent" xml:space="preserve">
+    <value>ACEPTAR</value>
+  </data>
+  <data name="CancelBtnContent" xml:space="preserve">
+    <value>CANCELAR</value>
+  </data>
+  <data name="OnUpdatingStatus" xml:space="preserve">
+    <value>ACTUALIZANDO</value>
+  </data>
+  <data name="ScriptConflict_textblock" xml:space="preserve">
+    <value>CONFLICTO DE SCRIPT</value>
+  </data>
+  <data name="ScriptConflictDesc_textblock" xml:space="preserve">
+    <value>Existe conflicto de secuencia de comandos durante la actualización. Presione el botón Aceptar para obtener la última versión de github o Cancelar para mantener la versión local.</value>
+  </data>
+  <data name="ActivatePromoKey_textblock" xml:space="preserve">
+    <value>ACTIVACIÓN DE LLAVE</value>
+  </data>
+  <data name="PromoKey_hint" xml:space="preserve">
+    <value>Ingrese la clave de suscripción</value>
+  </data>
+  <data name="PromoKey_limit" xml:space="preserve">
+    <value>Puede activar la siguiente clave de promoción en</value>
+  </data>
+  <data name="PromoKey_no_exists" xml:space="preserve">
+    <value>Esta clave de suscripción no existe</value>
+  </data>
+  <data name="PromoKey_already_used" xml:space="preserve">
+    <value>Esta clave ya ha sido activada</value>
+  </data>
+  <data name="PromoKeyOption_textblock" xml:space="preserve">
+    <value>Activación de llave</value>
+  </data>
+  <data name="PromoKey_success" xml:space="preserve">
+    <value>Clave exitosamente activada</value>
+  </data>
+  <data name="SUCCESS_TextBlock" xml:space="preserve">
+    <value>ÉXITO</value>
+  </data>
+  <data name="Downloading_images" xml:space="preserve">
+    <value>DESCARGAR RECURSOS</value>
+  </data>
+  <data name="Unpacking_images" xml:space="preserve">
+    <value>DESEMPAQUETADO DE RECURSOS</value>
+  </data>
+  <data name="CurrentServer_TextBlock" xml:space="preserve">
+    <value>Umbrella servidor </value>
+  </data>
+  <data name="LOAD_PRIVATE_SCRIPTS_ERROR" xml:space="preserve">
+    <value>No se pudo enviar la lista de scripts</value>
+  </data>
+  <data name="PrivateScripts" xml:space="preserve">
+    <value>Scripts privados</value>
+  </data>
+  <data name="UserScripts" xml:space="preserve">
+    <value>Scripts de usuario</value>
+  </data>
+  <data name="ForumUrl_textblock" xml:space="preserve">
+    <value>FORUM URL</value>
+  </data>
+  <data name="ForumUrlDesc_textblock" xml:space="preserve">
+    <value>Presione el botón de abajo para abrir el hilo del foro sobre el script con un idioma relativo</value>
+  </data>
+  <data name="RememberMyChoice" xml:space="preserve">
+    <value>Recuerda selección</value>
+  </data>
+  <data name="LIFETIME" xml:space="preserve">
+    <value>LIFETIME SUB.</value>
+  </data>
+  <data name="LOADPRODUCT_NOTFOUND" xml:space="preserve">
+    <value>Identificación de producto incorrecta</value>
+  </data>
+  <data name="HWID_BANNED" xml:space="preserve">
+    <value>HWID está prohibido</value>
+  </data>
+</root>

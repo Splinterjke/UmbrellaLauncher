@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginBtnContent" xml:space="preserve">
+    <value>签到</value>
+  </data>
+  <data name="Language_TextBlock" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="CheckingForUpdate" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="INIT_KERNEL_ERROR" xml:space="preserve">
+    <value>初始化：内核错误</value>
+  </data>
+  <data name="SERVER_CONNECT_ERROR" xml:space="preserve">
+    <value>初始化：服务器连接错误，请稍后重试</value>
+  </data>
+  <data name="DownloadingUpdate" xml:space="preserve">
+    <value>下载更新</value>
+  </data>
+  <data name="Authorizing" xml:space="preserve">
+    <value>授权</value>
+  </data>
+  <data name="UpdatingFailed" xml:space="preserve">
+    <value>更新：远程更新服务器不可用</value>
+  </data>
+  <data name="AUTH_ERROR" xml:space="preserve">
+    <value>授权：错误的登录名或密码</value>
+  </data>
+  <data name="HWID_ERROR" xml:space="preserve">
+    <value>授权：错误的HWID</value>
+  </data>
+  <data name="RemoteServerUnavailable" xml:space="preserve">
+    <value>服务器：远程服务器不可用</value>
+  </data>
+  <data name="LoadingText" xml:space="preserve">
+    <value>LOADING</value>
+  </data>
+  <data name="AskForSteamStart" xml:space="preserve">
+    <value>请启动Steam并再次按开始按钮</value>
+  </data>
+  <data name="SteamRebooting" xml:space="preserve">
+    <value>蒸汽喷射</value>
+  </data>
+  <data name="Injecting" xml:space="preserve">
+    <value>注射伞</value>
+  </data>
+  <data name="SubTimeExpired" xml:space="preserve">
+    <value>您的订阅时间已过，请更新订阅</value>
+  </data>
+  <data name="LOAD_KERNEL_ERROR" xml:space="preserve">
+    <value>内核：产品加载错误</value>
+  </data>
+  <data name="SERVER_ERROR" xml:space="preserve">
+    <value>初始化：服务器连接错误，请稍后重试</value>
+  </data>
+  <data name="ANTIVAC_OPENPROCESS_ERROR" xml:space="preserve">
+    <value>AntiVAC：OpenProcess错误</value>
+  </data>
+  <data name="ANTIVAC_STEAMPATH_ERROR" xml:space="preserve">
+    <value>AntiVAC：获取Steam路径失败（找不到steam.exe）</value>
+  </data>
+  <data name="ANTIVAC_INJECT_ERROR" xml:space="preserve">
+    <value>AntiVAC：注入错误，请通过管理员重新启动启动器并禁用防病毒和防火墙</value>
+  </data>
+  <data name="CHEAT_PROTECTION_ERROR" xml:space="preserve">
+    <value>作弊：init保护错误。</value>
+  </data>
+  <data name="CHEAT_DOTAPATH_ERROR" xml:space="preserve">
+    <value>作弊：获取Dota2路径失败，您可能从未启动过Dota2</value>
+  </data>
+  <data name="CHEAT_CRCCHECK_ERROR" xml:space="preserve">
+    <value>作弊：游戏文件检查错误，你会更新游戏客户端或等待Umbrella服务器更新，请稍后重试</value>
+  </data>
+  <data name="CHEAT_INJECT_ERROR" xml:space="preserve">
+    <value>作弊：注入错误</value>
+  </data>
+  <data name="LaunchingDota" xml:space="preserve">
+    <value>发射DOTA</value>
+  </data>
+  <data name="IncorrectLuaPath" xml:space="preserve">
+    <value>路径不正确，它只支持github .lua路径或存储库</value>
+  </data>
+  <data name="EmailHint" xml:space="preserve">
+    <value>电子邮件</value>
+  </data>
+  <data name="PasswordHint" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="ERROR_TextBlock" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="WARNING_TextBlock" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="SteamIsLaunched" xml:space="preserve">
+    <value>Steam已启动，但请打开Steam游戏库并按OK按钮</value>
+  </data>
+  <data name="MainSettings_TextBlock" xml:space="preserve">
+    <value>主要设置</value>
+  </data>
+  <data name="Start_TextBlock" xml:space="preserve">
+    <value>START</value>
+  </data>
+  <data name="FREE_DAYS" xml:space="preserve">
+    <value>空闲的日子</value>
+  </data>
+  <data name="Expire_TextBlock" xml:space="preserve">
+    <value>到期</value>
+  </data>
+  <data name="CheatStatus" xml:space="preserve">
+    <value>CHEAT状态</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="UpdateSubscription" xml:space="preserve">
+    <value>更新订阅</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>SCRIPTS</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>UPDATING</value>
+  </data>
+  <data name="AutoScriptsUpdate" xml:space="preserve">
+    <value>自动脚本更新</value>
+  </data>
+  <data name="CRCcheck" xml:space="preserve">
+    <value>CRC检查</value>
+  </data>
+  <data name="AntiVAC" xml:space="preserve">
+    <value>Anti VAC</value>
+  </data>
+  <data name="ManualSteamLaunched" xml:space="preserve">
+    <value>手动Steam启动接受</value>
+  </data>
+  <data name="ManualSteamLaunch_hint" xml:space="preserve">
+    <value>（当Dota2启动得太早时打开它）</value>
+  </data>
+  <data name="GameLaunchOptions" xml:space="preserve">
+    <value>游戏启动选项</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>例</value>
+  </data>
+  <data name="AddScripts_tooltip" xml:space="preserve">
+    <value>添加脚本</value>
+  </data>
+  <data name="UpdateScripts_tooltip" xml:space="preserve">
+    <value>更新所有脚本</value>
+  </data>
+  <data name="DeleteScripts_tooltip" xml:space="preserve">
+    <value>删除所有脚本</value>
+  </data>
+  <data name="PasteLuaPath_textblock" xml:space="preserve">
+    <value>粘贴LUA脚本路径</value>
+  </data>
+  <data name="URLtoLuaPath_hint" xml:space="preserve">
+    <value>lua脚本或github存储库的URL</value>
+  </data>
+  <data name="AcceptBtnContent" xml:space="preserve">
+    <value>接受</value>
+  </data>
+  <data name="CancelBtnContent" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="OnUpdatingStatus" xml:space="preserve">
+    <value>在更新</value>
+  </data>
+  <data name="ScriptConflict_textblock" xml:space="preserve">
+    <value>文件冲突</value>
+  </data>
+  <data name="ScriptConflictDesc_textblock" xml:space="preserve">
+    <value>更新时发生脚本冲突。 按接受按钮获取最新的github版本或取消保留本地版本。</value>
+  </data>
+  <data name="ActivatePromoKey_textblock" xml:space="preserve">
+    <value>关键的激活</value>
+  </data>
+  <data name="PromoKey_hint" xml:space="preserve">
+    <value>输入订阅密钥</value>
+  </data>
+  <data name="PromoKey_limit" xml:space="preserve">
+    <value>您可以激活下一个促销密钥</value>
+  </data>
+  <data name="PromoKey_no_exists" xml:space="preserve">
+    <value>订阅密钥不存在</value>
+  </data>
+  <data name="PromoKey_already_used" xml:space="preserve">
+    <value>此密钥已被激活</value>
+  </data>
+  <data name="PromoKeyOption_textblock" xml:space="preserve">
+    <value>促销代码</value>
+  </data>
+  <data name="PromoKey_success" xml:space="preserve">
+    <value>密钥成功激活</value>
+  </data>
+  <data name="SUCCESS_TextBlock" xml:space="preserve">
+    <value>SUCCESS</value>
+  </data>
+  <data name="Downloading_images" xml:space="preserve">
+    <value>下载资源</value>
+  </data>
+  <data name="Unpacking_images" xml:space="preserve">
+    <value>开发资源</value>
+  </data>
+  <data name="CurrentServer_TextBlock" xml:space="preserve">
+    <value>Umbrella 服务器</value>
+  </data>
+  <data name="LOAD_PRIVATE_SCRIPTS_ERROR" xml:space="preserve">
+    <value>无法发送脚本列表</value>
+  </data>
+  <data name="PrivateScripts" xml:space="preserve">
+    <value>私人脚本</value>
+  </data>
+  <data name="UserScripts" xml:space="preserve">
+    <value>用户脚本</value>
+  </data>
+  <data name="ForumUrl_textblock" xml:space="preserve">
+    <value>论坛网址</value>
+  </data>
+  <data name="ForumUrlDesc_textblock" xml:space="preserve">
+    <value>按下面的按钮以相对语言打开有关脚本的论坛帖子</value>
+  </data>
+  <data name="RememberMyChoice" xml:space="preserve">
+    <value>记住选择</value>
+  </data>
+  <data name="LIFETIME" xml:space="preserve">
+    <value>LIFETIME SUB.</value>
+  </data>
+  <data name="LOADPRODUCT_NOTFOUND" xml:space="preserve">
+    <value>产品ID错误</value>
+  </data>
+  <data name="HWID_BANNED" xml:space="preserve">
+    <value>HWID被禁止</value>
+  </data>
+</root>

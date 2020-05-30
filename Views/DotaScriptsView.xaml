@@ -1,0 +1,740 @@
+﻿<UserControl x:Class="UmbrellaProject.Views.DotaScriptsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:s="https://github.com/canton7/Stylet"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:converters="clr-namespace:UmbrellaProject.Converters"
+             xmlns:local="clr-namespace:UmbrellaProject.Views"
+             Language="{ApplicationLanguage}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:ScriptConfigToIconConverter x:Key="ScriptConfigToIconConverter"/>
+        <converters:ValueToVisibilityConverter x:Key="ValueToVisibilityConverter"/>
+        <Style x:Key="Dot" TargetType="Ellipse">
+            <Setter Property="Fill" Value="White"/>
+            <Setter Property="Opacity" Value=".3"/>
+            <Setter Property="Width" Value="6"/>
+            <Setter Property="Height" Value="6"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="263*"/>
+            <RowDefinition Height="147*"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#1a1a1a" BorderThickness="0,0,0,1" BorderBrush="#2d0d10">
+            <Border.Effect>
+                <DropShadowEffect Direction="-90" Opacity=".3" ShadowDepth="8" BlurRadius="15"/>
+            </Border.Effect>
+            <TextBlock Text="{DynamicTranslation Scripts}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" />
+        </Border>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Grid.RowSpan="2">
+            <Expander x:Name="ScriptsListExpander" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" Header="{DynamicTranslation UserScripts}" Expanded="{s:Action ScriptListExpanded}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources">
+                <ListBox x:Name="ScriptsListBox" ItemsSource="{Binding ScriptsData}" Foreground="#6a6a6a" SelectionMode="Multiple" Height="334">
+                    <ListBox.Style>
+                        <Style TargetType="{x:Type ListBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBox}">
+                                        <ScrollViewer x:Name="ScrollViewer">
+                                            <ScrollViewer.Style>
+                                                <Style TargetType="ScrollViewer">
+                                                    <Setter Property="CanContentScroll" Value="True" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                                                <Grid Background="{TemplateBinding Background}">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*" />
+                                                                        <RowDefinition Height="Auto" />
+                                                                    </Grid.RowDefinitions>
+                                                                    <ScrollContentPresenter Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2"
+                                                    CanContentScroll="{TemplateBinding CanContentScroll}"
+                                                    CanHorizontallyScroll="False"
+                                                    CanVerticallyScroll="False"
+                                                    KeyboardNavigation.DirectionalNavigation="Local" />
+                                                                    <ScrollBar Name="PART_HorizontalScrollBar"
+                                   Grid.Row="1"
+                                   Maximum="{TemplateBinding ScrollableWidth}"
+                                   Orientation="Horizontal"
+                                   ViewportSize="{TemplateBinding ViewportWidth}"
+                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                   Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                                    <ScrollBar Name="PART_VerticalScrollBar"
+                                   Grid.Column="1"
+                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                   Orientation="Vertical"
+                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                   Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                                </Grid>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ScrollViewer.Style>
+                                            <ItemsPresenter/>
+                                        </ScrollViewer>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Style>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                            <Setter Property="IsSelected" Value="{Binding IsEnabled}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Margin="{TemplateBinding Margin}"
+                            ClipToBounds="{TemplateBinding ClipToBounds}">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup Name="CommonStates">
+                                                    <VisualStateGroup.Transitions>
+                                                        <VisualTransition GeneratedDuration="0:0:0.3" To="Normal">
+                                                            <VisualTransition.GeneratedEasingFunction>
+                                                                <CircleEase EasingMode="EaseOut"/>
+                                                            </VisualTransition.GeneratedEasingFunction>
+                                                        </VisualTransition>
+                                                    </VisualStateGroup.Transitions>
+                                                    <VisualState Name="Normal"/>
+                                                    <VisualState Name="MouseOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="MouseOverBorder" Storyboard.TargetProperty="Opacity"
+                                                             To="0.1" Duration="0"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState Name="Disabled"/>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Grid>
+                                                <Border x:Name="MouseOverBorder"
+                                    Opacity="0"
+                                    Background="{TemplateBinding Foreground}"/>
+                                                <md:Ripple Feedback="{TemplateBinding Foreground}"
+                                        Focusable="False"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" Value=".56" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="1" VerticalContentAlignment="Center" Foreground="#991E29" Padding="10" Content="{Binding ScriptName}" IsChecked="{Binding IsEnabled}" FontSize="14" Command="{s:Action UpdateScriptConfig}" CommandParameter="{Binding}">
+                                    <CheckBox.Style>
+                                        <Style TargetType="{x:Type CheckBox}">
+                                            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                            <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"/>
+                                            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MaterialDesignValidationErrorTemplate}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                                                        <ControlTemplate.Resources>
+                                                            <Storyboard x:Key="Click">
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </ControlTemplate.Resources>
+                                                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Viewbox Width="18" Height="18" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+                                                                <Canvas Width="24" Height="24">
+                                                                    <Path x:Name="Graphic"
+                                      Data="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" 
+                                      Fill="{TemplateBinding Foreground}" />
+                                                                    <Ellipse x:Name="InteractionEllipse" Fill="{TemplateBinding Foreground}" Width="0" Height="0" Canvas.Top="12" Canvas.Left="12" Opacity="0" RenderTransformOrigin="0.5,0.5" >
+                                                                        <Ellipse.RenderTransform>
+                                                                            <TransformGroup>
+                                                                                <ScaleTransform/>
+                                                                                <SkewTransform/>
+                                                                                <RotateTransform/>
+                                                                                <TranslateTransform/>
+                                                                            </TransformGroup>
+                                                                        </Ellipse.RenderTransform>
+                                                                    </Ellipse>
+                                                                </Canvas>
+                                                            </Viewbox>
+                                                            <ContentPresenter RecognizesAccessKey="False" x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
+                                                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                                                <BeginStoryboard Storyboard="{StaticResource Click}"/>
+                                                            </EventTrigger>
+                                                            <Trigger Property="HasContent" Value="true">
+                                                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                                                <Setter Property="Padding" Value="4,2,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Opacity" TargetName="Graphic" Value=".26" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="true"/>
+                                                            <Trigger Property="IsChecked" Value="true">
+                                                                <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                                                <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                                <Setter Property="Opacity" TargetName="Graphic" Value="0.56"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Validation.HasError" Value="true">
+                                                                <Setter Property="Fill" TargetName="Graphic" Value="{DynamicResource ValidationErrorBrush}" />
+                                                                <Setter Property="Control.Foreground" TargetName="contentPresenter" Value="{DynamicResource ValidationErrorBrush}" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </CheckBox.Style>
+                                </CheckBox>
+                                <Button Grid.Column="0" Command="{s:Action DeleteScript}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFloatingActionButton}" Height="24" Width="24" Padding="0" Margin="10,0,0,0">
+                                    <md:PackIcon Kind="Delete" Height="18" Width="18" />
+                                </Button>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="Gray" IsHitTestVisible="False">
+                            <md:PackIcon Kind="{Binding ., Converter={StaticResource ScriptConfigToIconConverter}}" Height="22" Width="22" Foreground="Gray"/>
+                                </TextBlock>
+                                <!--<Button Grid.Column="2" Command="{s:Action UpdateScript}" CommandParameter="{Binding}" Visibility="{Binding IsUpdateAvailable, Converter={StaticResource BoolToVisibilityConverter}}"/>-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+            <Expander x:Name="PrivateScriptsListExpander" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" Header="{DynamicTranslation PrivateScripts}" Expanded="{s:Action ScriptListExpanded}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources">
+                <ListBox x:Name="PrivateScriptsListBox" ItemsSource="{Binding PrivateScriptsData}" Foreground="#6a6a6a" SelectionMode="Multiple" Height="334">
+                    <ListBox.Style>
+                        <Style TargetType="{x:Type ListBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBox}">
+                                        <ScrollViewer x:Name="ScrollViewer">
+                                            <ScrollViewer.Style>
+                                                <Style TargetType="ScrollViewer">
+                                                    <Setter Property="CanContentScroll" Value="True" />
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                                                <Grid Background="{TemplateBinding Background}">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*" />
+                                                                        <RowDefinition Height="Auto" />
+                                                                    </Grid.RowDefinitions>
+                                                                    <ScrollContentPresenter Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2"
+                                                    CanContentScroll="{TemplateBinding CanContentScroll}"
+                                                    CanHorizontallyScroll="False"
+                                                    CanVerticallyScroll="False"
+                                                    KeyboardNavigation.DirectionalNavigation="Local" />
+                                                                    <ScrollBar Name="PART_HorizontalScrollBar"
+                                   Grid.Row="1"
+                                   Maximum="{TemplateBinding ScrollableWidth}"
+                                   Orientation="Horizontal"
+                                   ViewportSize="{TemplateBinding ViewportWidth}"
+                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                   Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                                    <ScrollBar Name="PART_VerticalScrollBar"
+                                   Grid.Column="1"
+                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                   Orientation="Vertical"
+                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                   Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                                                </Grid>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </ScrollViewer.Style>
+                                            <ItemsPresenter/>
+                                        </ScrollViewer>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Style>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                            <Setter Property="IsSelected" Value="{Binding IsEnabled}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Margin="{TemplateBinding Margin}"
+                            ClipToBounds="{TemplateBinding ClipToBounds}">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup Name="CommonStates">
+                                                    <VisualStateGroup.Transitions>
+                                                        <VisualTransition GeneratedDuration="0:0:0.3" To="Normal">
+                                                            <VisualTransition.GeneratedEasingFunction>
+                                                                <CircleEase EasingMode="EaseOut"/>
+                                                            </VisualTransition.GeneratedEasingFunction>
+                                                        </VisualTransition>
+                                                    </VisualStateGroup.Transitions>
+                                                    <VisualState Name="Normal"/>
+                                                    <VisualState Name="MouseOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="MouseOverBorder" Storyboard.TargetProperty="Opacity"
+                                                             To="0.1" Duration="0"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState Name="Disabled"/>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Grid>
+                                                <Border x:Name="MouseOverBorder"
+                                    Opacity="0"
+                                    Background="{TemplateBinding Foreground}"/>
+                                                <md:Ripple Feedback="{TemplateBinding Foreground}"
+                                        Focusable="False"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" Value=".56" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="1" VerticalContentAlignment="Center" Foreground="#991E29" Padding="10" Content="{Binding ScriptName}" IsChecked="{Binding IsEnabled}" Command="{s:Action UpdatePrivateScriptConfig}" FontSize="14">
+                                    <CheckBox.Style>
+                                        <Style TargetType="{x:Type CheckBox}">
+                                            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                            <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"/>
+                                            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MaterialDesignValidationErrorTemplate}"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                                                        <ControlTemplate.Resources>
+                                                            <Storyboard x:Key="Click">
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="InteractionEllipse">
+                                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </ControlTemplate.Resources>
+                                                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Viewbox Width="18" Height="18" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+                                                                <Canvas Width="24" Height="24">
+                                                                    <Path x:Name="Graphic"
+                                      Data="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" 
+                                      Fill="{TemplateBinding Foreground}" />
+                                                                    <Ellipse x:Name="InteractionEllipse" Fill="{TemplateBinding Foreground}" Width="0" Height="0" Canvas.Top="12" Canvas.Left="12" Opacity="0" RenderTransformOrigin="0.5,0.5" >
+                                                                        <Ellipse.RenderTransform>
+                                                                            <TransformGroup>
+                                                                                <ScaleTransform/>
+                                                                                <SkewTransform/>
+                                                                                <RotateTransform/>
+                                                                                <TranslateTransform/>
+                                                                            </TransformGroup>
+                                                                        </Ellipse.RenderTransform>
+                                                                    </Ellipse>
+                                                                </Canvas>
+                                                            </Viewbox>
+                                                            <ContentPresenter RecognizesAccessKey="False" x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
+                                                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                                                <BeginStoryboard Storyboard="{StaticResource Click}"/>
+                                                            </EventTrigger>
+                                                            <Trigger Property="HasContent" Value="true">
+                                                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                                                <Setter Property="Padding" Value="4,2,0,0"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Opacity" TargetName="Graphic" Value=".26" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="true"/>
+                                                            <Trigger Property="IsChecked" Value="true">
+                                                                <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                                                <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                                <Setter Property="Opacity" TargetName="Graphic" Value="0.56"/>
+                                                            </Trigger>
+                                                            <Trigger Property="Validation.HasError" Value="true">
+                                                                <Setter Property="Fill" TargetName="Graphic" Value="{DynamicResource ValidationErrorBrush}" />
+                                                                <Setter Property="Control.Foreground" TargetName="contentPresenter" Value="{DynamicResource ValidationErrorBrush}" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </CheckBox.Style>
+                                </CheckBox>
+                                <Button Visibility="{Binding ., Converter={StaticResource ValueToVisibilityConverter}}" Grid.Column="0" Command="{s:Action OpenForumThread}" CommandParameter="{Binding}" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Center" Height="24" Width="24" Padding="0" Margin="10,0,0,0">
+                                    <md:PackIcon Kind="ExternalLink" Height="18" Width="18" Foreground="Gray"/>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+        </StackPanel>
+
+        <md:PopupBox Grid.Row="2" Margin="0,0,16,16" Style="{DynamicResource MaterialDesignMultiFloatingActionPopupBox}" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                             PlacementMode="TopAndAlignCentres"
+                             ToolTipService.Placement="Left"
+                             PopupMode="Click"
+                             StaysOpen="True">
+            <StackPanel Background="{x:Null}">
+                <Button Content="{md:PackIcon Kind=FilePlus,Size=24}" Command="{s:Action ShowAddScriptDialog}">
+                    <Button.ToolTip>
+                        <ToolTip Background="#3a3a3a">
+                            <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation Key=AddScripts_tooltip}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Content="{md:PackIcon Kind=Update,Size=24}" Command="{s:Action UpdateAllScripts}">
+                    <Button.ToolTip>
+                        <ToolTip Background="#3a3a3a">
+                            <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation UpdateScripts_tooltip}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button Content="{md:PackIcon Kind=DeleteForever,Size=24}" Command="{s:Action DeleteAllScripts}">
+                    <Button.ToolTip>
+                        <ToolTip Background="#3a3a3a">
+                            <TextBlock Foreground="#bbbbbb" Text="{DynamicTranslation DeleteScripts_tooltip}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+        </md:PopupBox>
+        <Grid Grid.Row="1" Background="#77000000" IsEnabled="{Binding IsUpdating}" Visibility="{Binding IsUpdating, Converter={StaticResource BoolToVisibilityConverter}}" Grid.RowSpan="2">
+            <TextBlock Text="{DynamicTranslation Updating}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Grid Margin="0,60,0,0" HorizontalAlignment="Center" Width="200">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard Name="waitingAnimation" RepeatBehavior="Forever">
+                                <DoubleAnimation Storyboard.TargetName="Dot1" BeginTime="0:0:0.0" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot1" BeginTime="0:0:0.0" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot1" BeginTime="0:0:0.0" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot2" BeginTime="0:0:0.1" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot2" BeginTime="0:0:0.1" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot2" BeginTime="0:0:0.1" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot3" BeginTime="0:0:0.2" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot3" BeginTime="0:0:0.2" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot3" BeginTime="0:0:0.2" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot4" BeginTime="0:0:0.3" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot4" BeginTime="0:0:0.3" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot4" BeginTime="0:0:0.3" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot5" BeginTime="0:0:0.4" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot5" BeginTime="0:0:0.4" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot5" BeginTime="0:0:0.4" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot6" BeginTime="0:0:0.5" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot6" BeginTime="0:0:0.5" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot6" BeginTime="0:0:0.5" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot7" BeginTime="0:0:0.6" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot7" BeginTime="0:0:0.6" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot7" BeginTime="0:0:0.6" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot8" BeginTime="0:0:0.7" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot8" BeginTime="0:0:0.7" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot8" BeginTime="0:0:0.7" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot9" BeginTime="0:0:0.8" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot9" BeginTime="0:0:0.8" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot9" BeginTime="0:0:0.8" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+
+                                <DoubleAnimation Storyboard.TargetName="Dot10" BeginTime="0:0:0.9" Storyboard.TargetProperty="Opacity" From=".3" To="1" AutoReverse="True" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot10" BeginTime="0:0:0.9" Storyboard.TargetProperty="Width" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetName="Dot10" BeginTime="0:0:0.9" Storyboard.TargetProperty="Height" From="6" To="8" AutoReverse="True" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Ellipse Name="Dot1" Style="{StaticResource Dot}" Margin="0"/>
+                <Ellipse Name="Dot2" Style="{StaticResource Dot}" Margin="20,0,0,0"/>
+                <Ellipse Name="Dot3" Style="{StaticResource Dot}" Margin="40,0,0,0"/>
+                <Ellipse Name="Dot4" Style="{StaticResource Dot}" Margin="60,0,0,0"/>
+                <Ellipse Name="Dot5" Style="{StaticResource Dot}" Margin="80,0,0,0"/>
+                <Ellipse Name="Dot6" Style="{StaticResource Dot}" Margin="100,0,0,0"/>
+                <Ellipse Name="Dot7" Style="{StaticResource Dot}" Margin="120,0,0,0"/>
+                <Ellipse Name="Dot8" Style="{StaticResource Dot}" Margin="140,0,0,0"/>
+                <Ellipse Name="Dot9" Style="{StaticResource Dot}" Margin="160,0,0,0"/>
+                <Ellipse Name="Dot10" Style="{StaticResource Dot}" Margin="180,0,0,0"/>
+            </Grid>
+        </Grid>
+        <md:DialogHost Grid.RowSpan="3"  CloseOnClickAway="True" DialogClosing="{s:Action OnCloseAddScriptDialog}" HorizontalContentAlignment="Center" IsOpen="{Binding IsAddScriptDialogOpen}">
+            <md:DialogHost.DialogContent>
+                <StackPanel Margin="16" Width="400">
+                    <TextBlock HorizontalAlignment="Center" Text="{DynamicTranslation PasteLuaPath_textblock}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <TextBox Margin="0 8 0 0" Text="{Binding LuaPath}" HorizontalAlignment="Stretch" md:HintAssist.Hint="{DynamicTranslation URLtoLuaPath_hint}" Foreground="White"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 0 0">
+                        <Button Content="{DynamicTranslation CancelBtnContent}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+                                Margin="0 0 8 0"
+                                        IsCancel="True"
+                                        Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="{DynamicTranslation AcceptBtnContent}"
+             LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"                              
+                                        IsDefault="True"                                        
+                                        Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </md:DialogHost.DialogContent>
+        </md:DialogHost>
+        <md:DialogHost Grid.RowSpan="3"  HorizontalContentAlignment="Center" Identifier="ScriptConflict">
+            <md:DialogHost.DialogContent>
+                <StackPanel Margin="16" Width="430" x:Name="ScriptConflictContent">
+                    <TextBlock HorizontalAlignment="Center" Text="{DynamicTranslation ScriptConflict_textblock}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <TextBlock Margin="0,10,0,0" Text="{Binding ScriptConflictName}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{DynamicTranslation ScriptConflictDesc_textblock}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 14 0 0">
+                        <Button Content="{DynamicTranslation CancelBtnContent}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+                                Margin="0 0 8 0"
+                                        IsCancel="True"
+                                        Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="{DynamicTranslation AcceptBtnContent}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"                              
+                                        IsDefault="True"                                        
+                                        Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </md:DialogHost.DialogContent>
+        </md:DialogHost>
+        <md:DialogHost Grid.RowSpan="3"  HorizontalContentAlignment="Center" CloseOnClickAway="True" DialogClosing="{s:Action OnCloseOpenUrlDialog}" IsOpen="{Binding IsOpenUrlDialogOpen}">
+            <md:DialogHost.DialogContent>
+                <StackPanel Margin="16" Width="430">
+                    <TextBlock HorizontalAlignment="Center" Text="{DynamicTranslation ForumUrl_textblock}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <TextBlock Text="{DynamicTranslation ForumUrlDesc_textblock}" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"/>
+                    <CheckBox  Margin="0 10 0 0" HorizontalAlignment="Center" IsChecked="{Binding IsLanguageRemembered}" VerticalContentAlignment="Center" Foreground="#991E29" Padding="10" Content="{DynamicTranslation RememberMyChoice}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources">
+                        <CheckBox.Style>
+                            <Style TargetType="{x:Type CheckBox}">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"/>
+                                <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MaterialDesignValidationErrorTemplate}"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                                            <ControlTemplate.Resources>
+                                                <Storyboard x:Key="Click">
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="InteractionEllipse">
+                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="InteractionEllipse">
+                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="48"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="InteractionEllipse">
+                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="InteractionEllipse">
+                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-24"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="InteractionEllipse">
+                                                        <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                    </DoubleAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </ControlTemplate.Resources>
+                                            <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Viewbox Width="18" Height="18" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}">
+                                                    <Canvas Width="24" Height="24">
+                                                        <Path x:Name="Graphic"
+                                      Data="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" 
+                                      Fill="{TemplateBinding Foreground}" />
+                                                        <Ellipse x:Name="InteractionEllipse" Fill="{TemplateBinding Foreground}" Width="0" Height="0" Canvas.Top="12" Canvas.Left="12" Opacity="0" RenderTransformOrigin="0.5,0.5" >
+                                                            <Ellipse.RenderTransform>
+                                                                <TransformGroup>
+                                                                    <ScaleTransform/>
+                                                                    <SkewTransform/>
+                                                                    <RotateTransform/>
+                                                                    <TranslateTransform/>
+                                                                </TransformGroup>
+                                                            </Ellipse.RenderTransform>
+                                                        </Ellipse>
+                                                    </Canvas>
+                                                </Viewbox>
+                                                <ContentPresenter RecognizesAccessKey="False" x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <EventTrigger RoutedEvent="ButtonBase.Click">
+                                                    <BeginStoryboard Storyboard="{StaticResource Click}"/>
+                                                </EventTrigger>
+                                                <Trigger Property="HasContent" Value="true">
+                                                    <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                                    <Setter Property="Padding" Value="4,2,0,0"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter Property="Opacity" TargetName="Graphic" Value=".26" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="true"/>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                </Trigger>
+                                                <Trigger Property="IsChecked" Value="{x:Null}">
+                                                    <Setter Property="Data" TargetName="Graphic" Value="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+                                                    <Setter Property="Opacity" TargetName="Graphic" Value="0.56"/>
+                                                </Trigger>
+                                                <Trigger Property="Validation.HasError" Value="true">
+                                                    <Setter Property="Fill" TargetName="Graphic" Value="{DynamicResource ValidationErrorBrush}" />
+                                                    <Setter Property="Control.Foreground" TargetName="contentPresenter" Value="{DynamicResource ValidationErrorBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 14 0 0">
+                        <Button Content="{DynamicTranslation CancelBtnContent}" LocalizationProperties.TranslationProvider="resx://UmbrellaProject;UmbrellaProject.Properties.Resources"
+                                Margin="0 0 8 0"
+                                        IsCancel="True"
+                                        Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Int32>0</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="ENGLISH" Margin="0 0 8 0" Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Int32>1</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Content="РУССКИЙ" Command="md:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Int32>2</system:Int32>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </md:DialogHost.DialogContent>
+        </md:DialogHost>
+    </Grid>
+</UserControl>
