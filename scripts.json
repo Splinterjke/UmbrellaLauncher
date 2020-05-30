@@ -1,0 +1,37 @@
+[
+  {
+    "scriptName": "DagonHake",
+    "scriptPath": null,
+    "scriptLocalPath": "\\scripts\\DagonHake.lua",
+    "repositoryPath": "http://github.com/Splinterjke/Hake.me-scripts",
+    "isEnabled": true
+  },
+  {
+    "scriptName": "HolaHolaGetDola",
+    "scriptPath": null,
+    "scriptLocalPath": "\\scripts\\HolaHolaGetDola.lua",
+    "repositoryPath": null,
+    "isEnabled": true
+  },
+  {
+    "scriptName": "MinimapHelper",
+    "scriptPath": null,
+    "scriptLocalPath": "\\scripts\\MinimapHelper.lua",
+    "repositoryPath": "http://github.com/Splinterjke/Hake.me-scripts",
+    "isEnabled": true
+  },
+  {
+    "scriptName": "SkyWrathHake",
+    "scriptPath": null,
+    "scriptLocalPath": "\\scripts\\SkyWrathHake.lua",
+    "repositoryPath": "http://github.com/Splinterjke/Hake.me-scripts",
+    "isEnabled": true
+  },
+  {
+    "scriptName": "TrickMyBlink",
+    "scriptPath": null,
+    "scriptLocalPath": "\\scripts\\TrickMyBlink.lua",
+    "repositoryPath": "http://github.com/Splinterjke/Hake.me-scripts",
+    "isEnabled": true
+  }
+]

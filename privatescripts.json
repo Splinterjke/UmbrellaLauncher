@@ -1,0 +1,152 @@
+[
+  {
+    "name": "AbilityAlert",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "AutoDisable",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "AutoPick",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "AutoStack",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Axe",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "CourierController",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "CreepBlocker",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "CritHack",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "dodger",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "EarthSpirit",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "InfoScreen",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "KAIO",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "KillStealer",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Kunkka",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Mars",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "MCGM",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Meepo",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "MiniMapInformer",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "MPHPabuse",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "notification_test",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "PTSwitcher",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Techies",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Terrorblade",
+    "isEnabled": true,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Visage",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  },
+  {
+    "name": "Zeus",
+    "isEnabled": false,
+    "forumUrl": "https://vk.com/misora",
+    "forumUrl_EN": "https://vk.com/misora"
+  }
+]

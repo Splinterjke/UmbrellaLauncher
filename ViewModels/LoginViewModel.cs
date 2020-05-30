@@ -42,7 +42,7 @@ namespace UmbrellaProject.ViewModels
 		{
 			this.settingsService = settingsService;
 			this.httpService = httpService;
-			ServerList = new Dictionary<string, string> { { "127.0.0.1", "Netherlands" }, { "127.0.0.1", "Moscow" }, { "127.0.0.1", "Hongkong" } };
+			ServerList = new Dictionary<string, string> { { "127.0.0.1", "Netherlands" }, { "127.0.0.2", "Moscow" }, { "127.0.0.3", "Hongkong" } };
 			serverPorts = new int[] { 999, 999, 999 };
 			Login = settingsService.ReadValue<string>(SettingsType.Login);
 			SelectedServer = settingsService.ReadValue<int>(SettingsType.ServerIndex);
